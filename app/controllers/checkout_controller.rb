@@ -36,6 +36,14 @@ class CheckoutController < ApplicationController
     render json: { error: e.message }, status: :internal_server_error
   end
 
+  # DELETE /checkout
+  def destroy
+    @cart.destroy!
+    render json: { message: "Checkout cleared" }, status: :ok
+  rescue => e
+    render json: { error: e.message }, status: :internal_server_error
+  end
+
   private
 
   def set_cart

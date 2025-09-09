@@ -85,4 +85,20 @@ RSpec.describe "Checkout API", type: :request do
       expect(json.map { |r| r["description"] }).to include("Buy One Get One Free")
     end
   end
+
+  describe "DELETE /checkout" do
+    it "clears the current cart" do
+      post "/checkout/scan", params: { code: "GR1" }
+      expect(Cart.first.cart_items.count).to eq(1)
+
+      delete "/checkout"
+      expect(response).to have_http_status(:ok)
+      expect(JSON.parse(response.body)["message"]).to eq("Checkout cleared")
+
+      get "/checkout"
+      json = JSON.parse(response.body)
+      expect(json["items"]).to be_empty
+      expect(json["total"]).to eq("0.00€")
+    end
+  end
 end
