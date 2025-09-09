@@ -12,8 +12,7 @@ RUN apt-get update -qq && \
 
 WORKDIR /app
 
-COPY server/Gemfile ./
-
+COPY server/Gemfile server/Gemfile.lock ./
 RUN gem install bundler --no-document && bundle install --jobs 4 --retry 3
 
 COPY server/ ./
