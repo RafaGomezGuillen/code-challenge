@@ -24,7 +24,7 @@ RSpec.describe "Checkout API", type: :request do
     end
   end
 
-  describe "GET /checkout" do
+  describe "GET /checkout (test 1)" do
     before do
       2.times { post "/checkout/scan", params: { code: "GR1" } } # BOGO
     end
@@ -38,7 +38,7 @@ RSpec.describe "Checkout API", type: :request do
     end
   end
 
-  describe "GET /checkout" do
+  describe "GET /checkout (test 2)" do
     before do
       1.times { post "/checkout/scan", params: { code: "GR1" } } # BOGO
       3.times { post "/checkout/scan", params: { code: "SR1" } } # Bulk discount: 3+ for 4.50€
@@ -53,7 +53,7 @@ RSpec.describe "Checkout API", type: :request do
     end
   end
 
-  describe "GET /checkout" do
+  describe "GET /checkout (test 3)" do
     before do
       1.times { post "/checkout/scan", params: { code: "GR1" } } # BOGO
       1.times { post "/checkout/scan", params: { code: "SR1" } } # Bulk discount: 3+ for 4.50€
@@ -66,23 +66,6 @@ RSpec.describe "Checkout API", type: :request do
 
       expect(json["items"].map { |i| i["code"] }).to include("GR1", "SR1", "CF1")
       expect(json["total"]).to eq("30.57€")
-    end
-  end
-
-  describe "GET /products" do
-    it "returns all products" do
-      get "/products"
-      json = JSON.parse(response.body)
-      expect(json.size).to eq(3)
-    end
-  end
-
-  describe "GET /rules" do
-    it "returns all pricing rules with description" do
-      get "/rules"
-      json = JSON.parse(response.body)
-      expect(json.size).to eq(3)
-      expect(json.map { |r| r["description"] }).to include("Buy One Get One Free")
     end
   end
 

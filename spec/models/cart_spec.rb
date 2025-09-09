@@ -18,7 +18,6 @@ RSpec.describe Cart, type: :model do
   end
 
   it "calculates total with discount" do
-    # Seed rules
     create(:percentage_bulk_rule, sku: "CF1", threshold: 3, factor: 2.0/3.0)
     3.times { cart.add_product("CF1") }
     expect(cart.total).to eq("22.46€")

@@ -1,16 +1,7 @@
 class CheckoutController < ApplicationController
   before_action :set_cart
 
-  def products
-    render json: Product.all
-  end
-
-  def rules
-    render json: PricingRule.all.map { |rule|
-      { applies_to: rule.sku, description: rule.description }
-    }
-  end
-
+  # GET /checkout
   def show
     items = @cart.cart_items.includes(:product).map do |item|
       {
@@ -24,6 +15,7 @@ class CheckoutController < ApplicationController
     render json: { items: items, total: @cart.total }
   end
 
+  # POST /checkout/scan
   def scan
     code = params[:code]&.upcase
     @cart.add_product(code)
