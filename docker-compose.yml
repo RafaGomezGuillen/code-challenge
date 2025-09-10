@@ -6,6 +6,7 @@ services:
     container_name: cc_server
     environment:
       RAILS_ENV: production
+      SECRET_KEY_BASE: dummy_secret_key
     ports:
       - "3000:3000"
     volumes:
