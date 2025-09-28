@@ -4,9 +4,7 @@ This is a code challenge I bravely fought for [amenitiz](https://github.com/amen
 
 Their epic feedback was:
 
-```txt
-Unfortunately, The outcome of the code challenge has been positive and your technical skills aren't aligned well with the requirement of this role.
-```
+![Email](./assets/email.png)
 
 Translation: “You’re good, but not our kind of good.”
 
