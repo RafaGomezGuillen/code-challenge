@@ -1,4 +1,18 @@
-# Code Challenge
+# Amenitiz
+
+This is a code challenge I bravely fought for [amenitiz](https://github.com/amenitiz). They reached out, we had a first interview, and then they handed me this [Code challenge](https://github.com/amenitiz/be-technical-challenge) like it was the final boss battle.
+
+Their epic feedback was:
+
+```txt
+Unfortunately, The outcome of the code challenge has been positive and your technical skills aren't aligned well with the requirement of this role.
+```
+
+Translation: “You’re good, but not our kind of good.”
+
+So yeah… if you copy this project, you probably won’t pass either. But hey, misery loves company, so go ahead jaja… 😅
+
+## Code challenge
 
 This project is a fullstack application built to simulate a supermarket checkout system.
 
